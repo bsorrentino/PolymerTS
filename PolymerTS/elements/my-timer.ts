@@ -3,9 +3,9 @@
 class MyTimer implements PolymerElement
 {
    @property({ type: Number, value: 0 })
-   public start: number;   
-   
-   public count: number;   
+   public start: number;
+
+   public count: number;
 
    private timerHandle: number;
 
@@ -13,11 +13,11 @@ class MyTimer implements PolymerElement
       this.count = this.start;
       this.timerHandle = setInterval(() => {
          this.count++;
-      }, 1000);      
+      }, 1000);
+
    }
 
    detatched() {
       clearInterval(this.timerHandle);
    }
 }
- 
