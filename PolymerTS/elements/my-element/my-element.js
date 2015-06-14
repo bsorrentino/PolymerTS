@@ -12,6 +12,9 @@ var MyElement = (function () {
     MyElement.prototype.regularTap = function (e) {
         alert("Thank you for tapping");
     };
+    MyElement.prototype.ready = function () {
+        console.log(this["is"], " ready!");
+    };
     __decorate([
         property({ type: String, value: "1024" })
     ], MyElement.prototype, "test");
@@ -24,3 +27,4 @@ var MyElement = (function () {
     ], MyElement);
     return MyElement;
 })();
+Register(MyElement);

@@ -7,30 +7,24 @@
 
    <link rel="import" href="bower_components/polymer/polymer.html">
 
-   <link rel="stylesheet" href="app.css" type="text/css" />
-   <script src="myapp.js"></script>
+   <script src="polymer.js"></script>
 
    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
-   
-   <link rel="import" href="elements/my-element.html">
-   <link rel="import" href="elements/my-timer.html">
+
+   <link rel="import" href="elements/my-app/my-app.html">
 </head>
 
 <body>
    <h1>Polymer with TypeScript example</h1>
    <div id="content"></div>
 
-   <hr />
-   <my-element>aaa</my-element>
-
-   <hr />
-   <my-timer start="42"></my-timer>
-   <hr />
+   <my-app></my-app>
 
    <script>
    window.addEventListener('WebComponentsReady', function (e) {
-      RegisterAll();
+     console.log( "components are ready!");
    });
    </script>
+
 </body>
 </html>

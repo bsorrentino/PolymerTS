@@ -2,6 +2,11 @@
 // Project: https://github.com/polymer
 // Definitions by: Antonino Porcino <https://github.com/nippur72>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
+var CPolymerElement = (function () {
+    function CPolymerElement() {
+    }
+    return CPolymerElement;
+})();
 function tag(tagname) {
     return function (target) {
         target.prototype["is"] = tagname;

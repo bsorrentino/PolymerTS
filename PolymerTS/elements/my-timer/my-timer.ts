@@ -1,6 +1,6 @@
 ﻿
 @tag("my-timer")
-class MyTimer implements PolymerElement
+class MyTimer implements IPolymerElement
 {
    @property({ type: Number, value: 0 })
    public start: number;
@@ -10,6 +10,8 @@ class MyTimer implements PolymerElement
    private timerHandle: number;
 
    ready() {
+      console.log( this["is"], "ready!");
+
       this.count = this.start;
       this.timerHandle = setInterval(() => {
          this.count++;
@@ -21,3 +23,5 @@ class MyTimer implements PolymerElement
       clearInterval(this.timerHandle);
    }
 }
+
+Register( MyTimer );

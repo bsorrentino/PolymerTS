@@ -15,9 +15,10 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./app.ts",
-        "./elements/my-element.ts",
-        "./elements/my-timer.ts",
+        "./elements/fluid-button/fluid-button.ts",
+        "./elements/my-app/my-app.ts",
+        "./elements/my-element/my-element.ts",
+        "./elements/my-timer/my-timer.ts",
         "./polymer.ts"
     ]
 }

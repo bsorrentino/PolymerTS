@@ -1,9 +1,9 @@
 ﻿
 @tag("my-element")
-class MyElement implements PolymerElement
+class MyElement implements IPolymerElement
 {
    @property({type: String, value: "1024"})
-   test: string;   
+   test: string;
 
    @listener("tap")
    regularTap(e)
@@ -11,11 +11,15 @@ class MyElement implements PolymerElement
       alert("Thank you for tapping");
    }
 
-   /*
+
    ready()
    {
-      
+
+      console.log(  this["is"], " ready!");
+
+
    }
-   */
+
 }
- 
+
+Register( MyElement );

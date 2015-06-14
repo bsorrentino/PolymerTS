@@ -3,7 +3,7 @@
 // Definitions by: Antonino Porcino <https://github.com/nippur72>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
-interface Polymer 
+interface Polymer
 {
    (prototype: PolymerElement): Function;
    Class(prototype: PolymerElement): Function;
@@ -12,91 +12,88 @@ interface Polymer
 
 declare var Polymer: Polymer;
 
-interface PolymerElement 
-{	
+interface IPolymerElement
+{
    properties?: Object;
    listeners?: Object;
 
-   // lifecycle
-   factoryImpl? (): void;
+  // lifecycle
+  factoryImpl? (): void;
 	ready? (): void;
 	created? (): void;
 	attached? (): void;
 	detached? (): void;
 	attributeChanged? (attrName: string, oldVal: any, newVal: any): void;
-	
-   $?: HTMLElement;
 
-   // utility functions
-
-   // Returns the first node in this element’s local DOM that matches selector.
-   $$?(selector): HTMLElement;   
-
-   // Toggles the named boolean class on the host element, adding the class if bool is truthy and removing it if bool is falsey. If node is specified, sets the class on node instead of the host element.
-   toggleClass?(name, bool, node?); 
-
-   // Like toggleClass, but toggles the named boolean attribute.
-   toggleAttribute?(name, bool, node?); 
-
-   // Moves a boolean attribute from oldNode to newNode, unsetting the attribute (if set) on oldNode and setting it on newNode.
-   attributeFollows?(name, newNode, oldNode); 
-
-   // Fires a custom event. The options object can contain the following properties:
-   fire?(type, detail?, options?); 
-
-   // Calls method asynchronously. If no wait time is specified, runs tasks with microtask timing (after the current method finishes, but before the next event from the event queue is processed). Returns a handle that can be used to cancel the task.
-   async?(method, wait?); 
-
-   // Cancels the identified async task.
-   cancelAsync?(handle); 
-
-   // Call debounce to collapse multiple requests for a named task into one invocation, which is made after the wait time has elapsed with no new request. If no wait time is given, the callback is called at microtask timing (guaranteed to be before paint).
-   debounce?(jobName, callback, wait?); 
-
-   // Cancels an active debouncer without calling the callback.
-   cancelDebouncer?(jobName); 
-
-   // Calls the debounced callback immediately and cancels the debouncer.
-   flushDebouncer?(jobName); 
-
-   // Returns true if the named debounce task is waiting to run.
-   isDebouncerActive?(jobName); 
-
-   // Applies a CSS transform to the specified node, or this element if no node is specified. 
-   transform?(transform, node); 
-   
-   // Transforms the specified node, or this element if no node is specified.
-   translate3d?(x, y, z, node); 
-   
-   // Dynamically imports an HTML document.
-   importHref?(href, onload, onerror); 
 }
 
+class CPolymerElement implements IPolymerElement {
+
+}
+
+interface FireOptions {
+      node?:any //Node to fire the event on (defaults to this).
+
+      bubbles?:boolean //Whether the event should bubble. Defaults to true.
+
+      cancelable?:boolean; //. Whether the event can be canceled with preventDefault. Defaults to false.
+}
+
+// Utility functions
+// https://www.polymer-project.org/1.0/docs/devguide/utility-functions.html
+declare class PolymerElement  {
+
+      $: { [id: string]: any }; //polymer object for elements that have an ID
+
+      // Returns the first node in this element’s local DOM that matches selector.
+      $$(selector): HTMLElement;
+
+      // Toggles the named boolean class on the host element, adding the class if bool is truthy and removing it if bool is falsey. If node is specified, sets the class on node instead of the host element.
+      toggleClass(name:string, bool:Boolean, node?:any);
+
+      // Like toggleClass, but toggles the named boolean attribute.
+      toggleAttribute(name:string, bool:boolean, node?:any);
+
+      // Moves a boolean attribute from oldNode to newNode, unsetting the attribute (if set) on oldNode and setting it on newNode.
+      attributeFollows(name:string, newNode:any, oldNode:any);
+
+      // Calls method asynchronously. If no wait time is specified, runs tasks with microtask timing (after the current method finishes, but before the next event from the event queue is processed). Returns a handle that can be used to cancel the task.
+      async(method: () => void, wait?: number): any ;
+       // Cancels the identified async task.
+      cancelAsync(handle:any);
+
+      // Fires a custom event. The options object can contain the following properties:
+      fire(type: string, details?: any, options?:FireOptions): void ;
+
+      // Dynamically imports an HTML document.
+      importHref(href, onload:() => void, onerror:() => void);
+
+}
 
 // tag decorator
-function tag(tagname: string) 
+function tag(tagname: string)
 {
-   return function (target: Function) 
-   { 
-      target.prototype["is"] = tagname;          
+   return function (target: Function)
+   {
+      target.prototype["is"] = tagname;
    }
 }
 
 // extends decorator
-function extendsTag(tagname: string) 
+function extendsTag(tagname: string)
 {
    return (target: Function) =>
-   { 
-      target.prototype["extends"] = tagname;          
+   {
+      target.prototype["extends"] = tagname;
    }
 }
 
 // hostAttributes decorator
-function hostAttributes(attributes: Object) 
+function hostAttributes(attributes: Object)
 {
    return (target: Function) =>
-   { 
-      target.prototype["hostAttributes"] = attributes;          
+   {
+      target.prototype["hostAttributes"] = attributes;
    }
 }
 
@@ -112,21 +109,23 @@ interface propDefinition
    observer?: string;
 }
 
+
 // property decorator
 function property(ob: propDefinition)
-{   
-   return (target: PolymerElement, propertyKey: string) => {            
+{
+   return (target: IPolymerElement, propertyKey: string) => {
       target.properties = target.properties || {};
-      target.properties[propertyKey] = ob;      
+      target.properties[propertyKey] = ob;
    }
 }
 
+// https://www.polymer-project.org/1.0/docs/devguide/events.html
 // listener decorator
 function listener(eventName: string)
-{   
-   return (target: PolymerElement, propertyKey: string) => {                  
+{
+   return (target: IPolymerElement, propertyKey: string) => {
       target.listeners = target.listeners || {};
-      target.listeners[eventName] = propertyKey;      
+      target.listeners[eventName] = propertyKey;
    }
 }
 
@@ -141,4 +140,3 @@ function RegisterClass(element: Function): void
 {
    Polymer.Class(element.prototype);
 }
-

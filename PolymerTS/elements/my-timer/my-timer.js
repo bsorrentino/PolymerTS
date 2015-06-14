@@ -11,6 +11,7 @@ var MyTimer = (function () {
     }
     MyTimer.prototype.ready = function () {
         var _this = this;
+        console.log(this["is"], "ready!");
         this.count = this.start;
         this.timerHandle = setInterval(function () {
             _this.count++;
@@ -27,3 +28,4 @@ var MyTimer = (function () {
     ], MyTimer);
     return MyTimer;
 })();
+Register(MyTimer);
