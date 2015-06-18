@@ -1,0 +1,25 @@
+{
+    "version": "1.5.0-alpha",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./app.ts",
+        "./elements/fluid-button/fluid-button.ts",
+        "./elements/my-app/my-app.ts",
+        "./elements/my-element/my-element.ts",
+        "./elements/my-timer/my-timer.ts",
+        "./polymer.ts"
+    ]
+}
