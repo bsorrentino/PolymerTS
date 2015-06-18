@@ -15,7 +15,6 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
-        "./app.ts",
         "./elements/fluid-button/fluid-button.ts",
         "./elements/my-app/my-app.ts",
         "./elements/my-element/my-element.ts",
