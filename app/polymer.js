@@ -62,7 +62,7 @@ function extend(tagname) {
         target.prototype["extends"] = tagname;
     };
 }
-function hostAttribute(attributes) {
+function hostAttributes(attributes) {
     return function (target) {
         target.prototype["hostAttributes"] = attributes;
     };
@@ -70,7 +70,30 @@ function hostAttribute(attributes) {
 function property(ob) {
     return function (target, propertyKey) {
         target.properties = target.properties || {};
-        target.properties[propertyKey] = ob;
+        if (typeof (target[propertyKey]) === "function") {
+            var params = ob["computed"];
+            var getterName = "get_computed_" + propertyKey;
+            ob["computed"] = getterName + "(" + params + ")";
+            target.properties[propertyKey] = ob;
+            target[getterName] = target[propertyKey];
+        }
+        else {
+            target.properties[propertyKey] = ob;
+        }
+    };
+}
+function computed(ob) {
+    return function (target, computedFuncName) {
+        target.properties = target.properties || {};
+        var propOb = ob || {};
+        var getterName = "get_computed_" + computedFuncName;
+        var funcText = target[computedFuncName].toString();
+        var start = funcText.indexOf("(");
+        var end = funcText.indexOf(")");
+        var propertiesList = funcText.substring(start + 1, end);
+        propOb["computed"] = getterName + "(" + propertiesList + ")";
+        target.properties[computedFuncName] = propOb;
+        target[getterName] = target[computedFuncName];
     };
 }
 function listener(eventName) {

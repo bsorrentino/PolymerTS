@@ -90,4 +90,4 @@ class FluidButton extends base implements PolymerElement
 
 }
 
-Polymer( FluidButton.prototype ) ;
+createElement( FluidButton ) ;

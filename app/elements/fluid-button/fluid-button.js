@@ -89,4 +89,4 @@ var FluidButton = (function (_super) {
     ], FluidButton);
     return FluidButton;
 })(base);
-Polymer(FluidButton.prototype);
+createElement(FluidButton);
