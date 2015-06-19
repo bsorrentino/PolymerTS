@@ -16,8 +16,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       display: block;
     }
     #fldbtn {
-        background: red;
-        padding: 100px;
+        padding: 5px;
+
+        color: #FFF;
+        background-color: #6bad4b;
+        height: 250px;
+        width: 250px;
+        text-align: center;
+        line-height: 250px;
+        font-weight: 300;
+        font-size: 30px;
+        cursor: pointer;
+        border-radius: 200px;
+        box-shadow: 5px 10px 10px rgba(0,0,0,0.5);
+        position: relative;
+
+    }
+
+    .unselectable {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
 
     .longpress {
@@ -31,7 +50,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   </style>
   <template>
-    <div id="fldbtn">Hello from <span>{{foo}}</span></div>
+    <div id="fldbtn" class="unselectable">
+      <span>{{text}}</span>
+    </div>
   </template>
 </dom-module>
 

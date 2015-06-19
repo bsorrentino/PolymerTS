@@ -66,12 +66,12 @@ var FluidButton = (function (_super) {
         console.log(this["is"], "ready!");
         this.async(function () {
             console.log("FluidButton async");
-            _this.foo = "HELLO!";
+            _this.text = "HELLO!";
         }, 1000);
     };
     __decorate([
         property({ type: String, value: "" })
-    ], FluidButton.prototype, "foo");
+    ], FluidButton.prototype, "text");
     Object.defineProperty(FluidButton.prototype, "cancel",
         __decorate([
             listener("up")

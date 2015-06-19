@@ -4,7 +4,7 @@
 class FluidButton extends base implements PolymerElement
 {
    @property({ type: String, value: "" })
-   public foo: string;
+   public text: string;
 
 
    private longpress = false;
@@ -81,7 +81,7 @@ class FluidButton extends base implements PolymerElement
        this.async( ()=>{
 
          console.log( "FluidButton async");
-         this.foo = "HELLO!";
+         this.text = "HELLO!";
 
        }, 1000);
 
