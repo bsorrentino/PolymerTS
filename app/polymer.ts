@@ -5,7 +5,9 @@
 
 // ref to Polymer.Base (this)
 
-class base {
+module polymer {
+
+export class Base {
 	$: any;
 	$$: any;
 
@@ -56,20 +58,9 @@ class base {
 	updateStyles():void {}
 }
 
-interface Polymer {
-	(prototype: PolymerElement): Function;
-	Class(prototype: PolymerElement): Function;
-	dom(node: HTMLElement): HTMLElement;
 
-	appendChild?(node): HTMLElement;
-	insertBefore?(node, beforeNode): HTMLElement;
-	removeChild?(node): HTMLElement;
-   flush?();
-}
 
-declare var Polymer: Polymer;
-
-interface PolymerElement {
+export interface Element {
 	properties?: Object;
 	listeners?: Object;
 	behaviors?: Object[];
@@ -87,6 +78,34 @@ interface PolymerElement {
    //
    prototype?: Object;
 }
+
+
+// property definition interface
+export interface propDefinition {
+   name?: string;
+	type?: any;
+	value?: any;
+	reflectToAttribute?: boolean;
+	readonly?: boolean;
+	notify?: boolean;
+	computed?: string;
+	observer?: string;
+}
+
+} // end module P
+
+interface Polymer {
+	(prototype: polymer.Element): Function;
+	Class(prototype: polymer.Element): Function;
+	dom(node: HTMLElement): HTMLElement;
+
+	appendChild?(node): HTMLElement;
+	insertBefore?(node, beforeNode): HTMLElement;
+	removeChild?(node): HTMLElement;
+   flush?();
+}
+
+declare var Polymer: Polymer;
 
 // component decorator
 function component(tagname: string) {
@@ -109,52 +128,10 @@ function hostAttributes(attributes: Object) {
 	}
 }
 
-// property definition interface
-interface propDefinition {
-   name?: string;
-	type?: any;
-	value?: any;
-	reflectToAttribute?: boolean;
-	readonly?: boolean;
-	notify?: boolean;
-	computed?: string;
-	observer?: string;
-}
-
-/*
-// property decorator (simple version)
-function property(ob: propDefinition) {
-	return (target: PolymerElement, propertyKey: string) => {
-		target.properties = target.properties || {};
-		target.properties[propertyKey] = ob;
-	}
-}
-*/
-
-/*
-// property decorator, computed properties via "name:"
-function property(ob: propDefinition) {
-   return (target: PolymerElement, propertyKey: string) => {
-      target.properties = target.properties || {};
-      if (typeof (target[propertyKey]) === "function")
-      {
-         // property is function, treat it as a computed property
-         var name = ob["name"];
-         ob["computed"] = propertyKey + "(" + ob["computed"] + ")";
-         target.properties[name] = ob;
-      }
-      else
-      {
-         // normal property
-         target.properties[propertyKey] = ob;
-      }
-   }
-}
-*/
 
 // property decorator with automatic name for computed props
-function property(ob: propDefinition) {
-   return (target: PolymerElement, propertyKey: string) => {
+function property(ob: polymer.propDefinition) {
+   return (target: polymer.Element, propertyKey: string) => {
       target.properties = target.properties || {};
       if (typeof (target[propertyKey]) === "function") {
          // property is function, treat it as a computed property
@@ -172,8 +149,8 @@ function property(ob: propDefinition) {
 }
 
 // computed decorator
-function computed(ob?: propDefinition) {
-   return (target: PolymerElement, computedFuncName: string) => {
+function computed(ob?: polymer.propDefinition) {
+   return (target: polymer.Element, computedFuncName: string) => {
       target.properties = target.properties || {};
       //var propOb = target.properties[computedFuncName] || {};
       var propOb = ob || {};
@@ -190,7 +167,7 @@ function computed(ob?: propDefinition) {
 
 // listener decorator
 function listener(eventName: string) {
-	return (target: PolymerElement, propertyKey: string) => {
+	return (target: polymer.Element, propertyKey: string) => {
 		target.listeners = target.listeners || {};
 		target.listeners[eventName] = propertyKey;
 	}
@@ -216,14 +193,14 @@ function behavior(behaviorObject: any): any {
 function observe(propertiesList: string) {
    if (propertiesList.indexOf(",") > 0) {
       // observing multiple properties
-      return (target: PolymerElement, observerFuncName: string) => {
+      return (target: polymer.Element, observerFuncName: string) => {
          target.observers = target.observers || [];
          target.observers.push(observerFuncName + "(" + propertiesList + ")");
       }
    }
    else {
       // observing single property
-      return (target: PolymerElement, observerName: string) => {
+      return (target: polymer.Element, observerName: string) => {
          target.properties = target.properties || {};
          target.properties[propertiesList] = target.properties[propertiesList] || {};
          target.properties[propertiesList].observer = observerName;

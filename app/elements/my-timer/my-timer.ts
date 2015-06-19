@@ -1,6 +1,6 @@
 ﻿
 @component("my-timer")
-class MyTimer implements PolymerElement
+class MyTimer implements polymer.Element
 {
    @property({ type: Number, value: 0 })
    public start: number;

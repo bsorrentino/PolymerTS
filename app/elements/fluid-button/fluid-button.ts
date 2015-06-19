@@ -1,7 +1,7 @@
 /// <reference path="../../polymer.ts"/>
 
 @component("fluid-button")
-class FluidButton extends base implements PolymerElement
+class FluidButton extends polymer.Base implements polymer.Element
 {
    @property({ type: String, value: "" })
    public text: string;

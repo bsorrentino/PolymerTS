@@ -1,7 +1,7 @@
 ﻿/// <reference path="../../polymer.ts"/>
 
 @component("my-app")
-class MyApplication implements PolymerElement {
+class MyApplication implements polymer.Element {
 
   @listener("longpress")
   private longpress(e) {

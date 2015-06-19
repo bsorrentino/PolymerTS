@@ -88,5 +88,5 @@ var FluidButton = (function (_super) {
         component("fluid-button")
     ], FluidButton);
     return FluidButton;
-})(base);
+})(polymer.Base);
 createElement(FluidButton);

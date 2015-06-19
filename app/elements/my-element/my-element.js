@@ -28,7 +28,7 @@ var MyBehaviour = (function (_super) {
         component("my-behaviour")
     ], MyBehaviour);
     return MyBehaviour;
-})(base);
+})(polymer.Base);
 var MyElement = (function (_super) {
     __extends(MyElement, _super);
     function MyElement() {
@@ -66,5 +66,5 @@ var MyElement = (function (_super) {
         behavior(MyBehaviour)
     ], MyElement);
     return MyElement;
-})(base);
+})(polymer.Base);
 createElement(MyElement);
