@@ -1,4 +1,3 @@
-/// <reference path="../../polymer-ts.ts"/>
 
 @component("fluid-button")
 class FluidButton extends polymer.Base implements polymer.Element
