@@ -19,6 +19,6 @@
         "./elements/my-app/my-app.ts",
         "./elements/my-element/my-element.ts",
         "./elements/my-timer/my-timer.ts",
-        "./polymer.ts"
+        "./polymer-ts.ts"
     ]
 }

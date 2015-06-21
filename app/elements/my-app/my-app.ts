@@ -1,4 +1,4 @@
-﻿/// <reference path="../../polymer.ts"/>
+﻿/// <reference path="../../polymer-ts.ts"/>
 
 @component("my-app")
 class MyApplication implements polymer.Element {
