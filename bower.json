@@ -1,35 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "polymer-ts",  
-  "homepage": "https://github.com/nippur72/PolymerTS",
-  "authors": [
-    "Antonino Porcino <nino.porcino@gmail.com>"
-  ],
-  "description": "Polymer 1.0 for TypeScript",
-  "main": "polymer-ts.js",
-  "keywords": [
-    "polymer",
-    "typescript"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "bower.json",
-    "Test",
-    "bin",
-    "obj",
-    "*.sln",
-    "*.suo",
-    "*.csproj",
-    "*.csproj.user",
-    "README.md",
-    "web.*"
-  ],
-  "dependencies": {
-    "polymer": ">=1.0.4"
-=======
   "name": "polymer-starter-kit",
   "private": true,
   "dependencies": {
@@ -38,11 +7,10 @@
     "platinum-elements": "PolymerElements/platinum-elements#1.0.1",
     "neon-elements": "PolymerElements/neon-elements#1.0.0",
     "page": "visionmedia/page.js#~1.6.3",
-    "polymer-ts": "~0.0.5"
+    "polymer-ts": "~0.0.7"
   },
   "devDependencies": {
     "web-component-tester": "*",
     "test-fixture": "PolymerElements/test-fixture#^1.0.0"
->>>>>>> starterkit
   }
 }
