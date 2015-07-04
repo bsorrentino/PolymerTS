@@ -15,6 +15,7 @@ class MyTimer implements polymer.Element
       this.count = this.start;
       this.timerHandle = setInterval(() => {
          this.count++;
+         console.log( "count", this.count);
       }, 1000);
 
    }
