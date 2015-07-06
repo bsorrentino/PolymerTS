@@ -16,7 +16,7 @@ class FluidButton extends polymer.Base implements polymer.Element
 
    }
 
-   @listener("up")
+   @listen("up")
    private cancel(ev:CustomEvent) {
      console.log("up", ev);
 
@@ -27,7 +27,7 @@ class FluidButton extends polymer.Base implements polymer.Element
      this.el.classList.remove("longpress");
    }
 
-   @listener("tap")
+   @listen("tap")
    private click(ev:CustomEvent) {
      console.log("down", ev);
 
@@ -46,7 +46,7 @@ class FluidButton extends polymer.Base implements polymer.Element
 
    }
 
-   @listener("down")
+   @listen("down")
    private start(ev:CustomEvent) {
 
      console.log("tap", ev);

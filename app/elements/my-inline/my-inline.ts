@@ -11,12 +11,12 @@
 
 @style
 (`
-   :host { 
-      display: block; 
-   } 
+   :host {
+      display: block;
+   }
 
-   div { 
-      color: red; 
+   div {
+      color: red;
    }
 `)
 

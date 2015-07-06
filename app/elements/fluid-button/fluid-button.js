@@ -1,8 +1,7 @@
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
@@ -11,6 +10,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
         case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
     }
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var FluidButton = (function (_super) {
     __extends(FluidButton, _super);
@@ -69,23 +71,35 @@ var FluidButton = (function (_super) {
         }, 1000);
     };
     __decorate([
-        property({ type: String, value: "" })
+        property({ type: String, value: "" }), 
+        __metadata('design:type', String)
     ], FluidButton.prototype, "text");
     Object.defineProperty(FluidButton.prototype, "cancel",
         __decorate([
-            listener("up")
+            listen("up"), 
+            __metadata('design:type', Function), 
+            __metadata('design:paramtypes', [CustomEvent]), 
+            __metadata('design:returntype', Object)
         ], FluidButton.prototype, "cancel", Object.getOwnPropertyDescriptor(FluidButton.prototype, "cancel")));
     Object.defineProperty(FluidButton.prototype, "click",
         __decorate([
-            listener("tap")
+            listen("tap"), 
+            __metadata('design:type', Function), 
+            __metadata('design:paramtypes', [CustomEvent]), 
+            __metadata('design:returntype', Object)
         ], FluidButton.prototype, "click", Object.getOwnPropertyDescriptor(FluidButton.prototype, "click")));
     Object.defineProperty(FluidButton.prototype, "start",
         __decorate([
-            listener("down")
+            listen("down"), 
+            __metadata('design:type', Function), 
+            __metadata('design:paramtypes', [CustomEvent]), 
+            __metadata('design:returntype', Object)
         ], FluidButton.prototype, "start", Object.getOwnPropertyDescriptor(FluidButton.prototype, "start")));
     FluidButton = __decorate([
-        component("fluid-button")
+        component("fluid-button"), 
+        __metadata('design:paramtypes', [])
     ], FluidButton);
     return FluidButton;
 })(polymer.Base);
 createElement(FluidButton);
+//# sourceMappingURL=fluid-button.js.map

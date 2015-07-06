@@ -16,9 +16,10 @@
         "!./node_modules/**/*.ts"
     ],
     "files": [
+        "./app/bower_components/polymer-ts/polymer-ts.ts",
         "./app/elements/fluid-button/fluid-button.ts",
         "./app/elements/my-element/my-element.ts",
-        "./app/elements/my-timer/my-timer.ts",
-        "./bower_components/polymer-ts/polymer-ts.ts",
+        "./app/elements/my-inline/my-inline.ts",
+        "./app/elements/my-timer/my-timer.ts"
     ]
 }
