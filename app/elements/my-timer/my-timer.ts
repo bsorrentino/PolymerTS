@@ -1,24 +1,19 @@
 ﻿
-@component('my-timer')
-class MyTimer implements polymer.Element
+@component("my-timer")
+class MyTimer extends polymer.Base implements polymer.Element
 {
    @property({ type: Number, value: 0 })
-   public start: number;
-
-   @property()
-   public count: number;
+   public start: number;   
+   
+   public count: number;   
 
    private timerHandle: number;
 
    ready() {
-      console.log( this['is'], 'ready!');
-
       this.count = this.start;
       this.timerHandle = setInterval(() => {
          this.count++;
-         console.log( 'count', this.count);
-      }, 1000);
-
+      }, 1000);      
    }
 
    detatched() {
@@ -26,4 +21,5 @@ class MyTimer implements polymer.Element
    }
 }
 
-createElement( MyTimer );
+
+ 
