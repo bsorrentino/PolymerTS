@@ -1,4 +1,6 @@
-﻿@component("my-behaviour")
+/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+
+@component("my-behaviour")
 class MyBehaviour extends polymer.Base implements polymer.Element {
    @listen("behave")
    onBehave() {
@@ -44,4 +46,4 @@ class MyElement extends polymer.Base implements polymer.Element {
 
 }
 
-createElement( MyElement );
+MyElement.register();

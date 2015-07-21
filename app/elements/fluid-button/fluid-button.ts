@@ -1,3 +1,4 @@
+/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
 
 @component("fluid-button")
 class FluidButton extends polymer.Base implements polymer.Element
@@ -89,4 +90,4 @@ class FluidButton extends polymer.Base implements polymer.Element
 
 }
 
-createElement( FluidButton ) ;
+FluidButton.register();

@@ -1,3 +1,4 @@
+/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
 ﻿
 @component("my-inline")
 
@@ -25,3 +26,5 @@ class MyInline extends polymer.Base implements polymer.Element
    @property({ value: "hi" })
    prop: string;
 }
+
+MyInline.register();

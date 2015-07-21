@@ -12,11 +12,11 @@
         "suppressImplicitAnyIndexErrors": true
     },
     "filesGlob": [
-        "./**/*.ts",
-        "!./node_modules/**/*.ts"
+        "./app/**/*.ts",
+        "!./node_modules/**/*.ts",
+        "!./app/bower_components/**/*.ts"
     ],
     "files": [
-        "./app/bower_components/polymer-ts/polymer-ts.ts",
         "./app/elements/fluid-button/fluid-button.ts",
         "./app/elements/my-element/my-element.ts",
         "./app/elements/my-inline/my-inline.ts",
